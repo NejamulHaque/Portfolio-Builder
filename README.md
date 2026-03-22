@@ -29,6 +29,7 @@ Create your own professional portfolio website in minutes using this **AI-powere
 ---
 
 ## 📂 Project Structure
+```
 portfolio-builder/
 ├── client/
 │   ├── src/
@@ -41,7 +42,7 @@ portfolio-builder/
 │   └── app.js / api routes
 ├── README.md
 └── package.json
-
+```
 ---
 
 ## 🧪 Getting Started
