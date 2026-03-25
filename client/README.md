@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Environment Variables
+
+This project requires several environment variables for Firebase and Supabase integration. 
+
+1. Create a `.env` file in the `client` directory.
+2. Copy the contents of `.env.example` into `.env`.
+3. Replace the placeholder values with your actual API keys.
+
+**Note:** Never commit the `.env` file to version control. It is already included in `.gitignore`.
+
 ## Available Scripts
 
 In the project directory, you can run:
