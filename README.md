@@ -88,7 +88,7 @@ portfolio-builder/
 
 ## 📸 Screenshots
 
-https://portfolio-builder-ruby-alpha.vercel.app/
+https://builderr.ai.vercel.app/
 
 
 ⸻
@@ -103,5 +103,5 @@ Thanks to the open-source tools and libraries used in this project.
 ## 📬 Contact
 
 📧 Email: nejamulhaque05@gmail.com
-🔗 Portfolio: https://portfolio-ai-theta.vercel.app/
+🔗 Portfolio: https://nejamulhaque.vercel.app/
 🐙 GitHub: github.com/NejamulHaque    
