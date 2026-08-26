@@ -2,7 +2,7 @@
 
 **Portfolio.ai** is a modern, AI-powered portfolio builder designed for developers, designers, and creatives. It features a real-time editor, multiple themes (Minimalist, Cyberpunk, Corporate), AI-generated content, and a manual UPI payment verification system with an Admin Dashboard.
 
-![Portfolio.ai Preview](https://builderr-ai.vercel.app)
+(https://builderr-ai.vercel.app)
 
 ## ✨ Features
 
