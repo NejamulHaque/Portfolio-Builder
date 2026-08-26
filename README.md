@@ -1,3 +1,37 @@
+# 🚀 Portfolio.ai - The Ultimate Developer Portfolio Builder
+
+**Portfolio.ai** is a modern, AI-powered portfolio builder designed for developers, designers, and creatives. It features a real-time editor, multiple themes (Minimalist, Cyberpunk, Corporate), AI-generated content, and a manual UPI payment verification system with an Admin Dashboard.
+
+![Portfolio.ai Preview](https://via.placeholder.com/1200x600/050505/6366f1?text=Portfolio.ai+Preview)
+
+## ✨ Features
+
+-   **⚡ Real-Time Editor:** See changes instantly as you type.
+-   **🤖 AI Integration (IRUS AI):** Auto-generate professional bios, headlines, and project descriptions.
+-   **🎨 Multiple Themes:** Switch between Minimalist, Cyberpunk, and Corporate styles.
+-   **💳 Manual Payment System:** UPI QR code payment flow with Admin approval.
+-   **🛡️ Admin Dashboard:** Manage subscription requests, approve/reject payments, and view user stats.
+-   **📄 PDF Export:** Download your portfolio as a resume PDF.
+-   ** Secure Auth:** Supabase Authentication with protected routes.
+-   **📱 Responsive:** Looks perfect on mobile and desktop.
+
+## 🛠️ Tech Stack
+
+-   **Frontend:** React.js, Vite, Tailwind CSS, Framer Motion
+-   **Backend/Database:** Supabase (PostgreSQL, Auth, Storage)
+-   **AI Engine:** IRUS AI (via Proxy)
+-   **Icons:** Lucide React, React Icons
+-   **Deployment:** Vercel
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+-   Node.js (v18+)
+-   npm or yarn
+-   Supabase Account
+-   IRUS AI API Key
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
