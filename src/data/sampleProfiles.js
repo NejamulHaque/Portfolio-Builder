@@ -6,8 +6,8 @@ export const SAMPLE_PROFILES = {
     name: 'Nejamul Haque',
     username: 'nejamulhaque',
     headline: 'Computer Science Undergraduate | DevSecOps Aspirant',
-    bio: 'Motivated Computer Science undergraduate specializing in backend architecture, system administration, and infrastructure automation. Strong foundational knowledge in Linux environments, network protocols, version control workflows, and DevSecOps engineering.',
-    avatar_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
+    bio: 'Motivated Computer Science undergraduate specializing in backend architecture, system administration, and infrastructure automation. Experienced in vulnerability analysis and digital threat investigation through the UP Police Cybersecurity Internship. Strong foundational knowledge in Linux environments, network protocols, version control workflows, and DevSecOps engineering.',
+    avatar_url: '/nejamul.jpg',
     location: 'Bettiah, Bihar, India',
     theme: 'dark',
     template: 'cyberpunk',
@@ -19,6 +19,12 @@ export const SAMPLE_PROFILES = {
       { category: 'AI & Machine Learning', skills: ['Generative AI Integration', 'Prompt Engineering', 'AI API Consumption', 'Python'] }
     ],
     experience: [
+      {
+        company: 'UP Police (Amroha Police)',
+        role: 'Cybersecurity & Threat Analysis Intern',
+        duration: 'Cybersecurity Internship',
+        desc: 'Analyzed system vulnerabilities, investigated digital security threats, and monitored authentication logs. Assisted in network vulnerability assessments, firewall rule configuration, and secure communications analysis.'
+      },
       {
         company: 'Self-Directed Systems & Infrastructure Learning',
         role: 'Systems & Security Practitioner',
@@ -68,8 +74,7 @@ export const SAMPLE_PROFILES = {
       }
     ],
     contact: {
-      email: 'nejamulhaqueruhaan86@gmail.com',
-      phone: '+91-6299676007',
+      email: 'nejamulhaque.works@gmail.com',
       website: 'https://nejamulhaque.vercel.app/',
       location: 'Bettiah, Bihar, India'
     },
@@ -78,7 +83,7 @@ export const SAMPLE_PROFILES = {
       { platform: 'linkedin', url: 'https://www.linkedin.com/in/nejamulhaque/' },
       { platform: 'website', url: 'https://nejamulhaque.vercel.app/' }
     ],
-    views: 1850
+    views: 2450
   },
 
   fullstack: {
@@ -135,7 +140,6 @@ export const SAMPLE_PROFILES = {
     ],
     contact: {
       email: 'alex.rivera@engineer.dev',
-      phone: '+1 (415) 890-2341',
       website: 'https://alexrivera.dev',
       location: 'San Francisco, CA'
     },

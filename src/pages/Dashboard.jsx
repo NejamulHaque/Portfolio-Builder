@@ -51,7 +51,7 @@ export default function Dashboard() {
     name: '', username: '', bio: '', avatar_url: '', headline: '', location: '',
     skills: [{ category: 'Frontend', skills: ['React', 'TypeScript', 'Tailwind'] }],
     projects: [], experience: [], education: [], certificates: [],
-    contact: { email: '', phone: '', website: '', location: '' },
+    contact: { email: '', website: '', location: '' },
     socials: [], theme: 'dark', template: 'minimal'
   });
 
@@ -808,10 +808,10 @@ export default function Dashboard() {
                   onChange={e => setFormData({ ...formData, contact: { ...formData.contact, email: e.target.value } })} 
                 />
                 <input 
-                  placeholder="Phone Number (Optional)" 
+                  placeholder="Portfolio / Website URL" 
                   className="p-3 rounded-xl bg-black/30 border border-white/10 text-white placeholder-gray-500 outline-none focus:border-indigo-500 text-xs" 
-                  value={formData.contact?.phone || ''} 
-                  onChange={e => setFormData({ ...formData, contact: { ...formData.contact, phone: e.target.value } })} 
+                  value={formData.contact?.website || ''} 
+                  onChange={e => setFormData({ ...formData, contact: { ...formData.contact, website: e.target.value } })} 
                 />
               </div>
             </section>

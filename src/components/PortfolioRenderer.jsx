@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { 
   Globe, Mail, MapPin, ExternalLink, Code, Briefcase, 
-  GraduationCap, Award, Sparkles,
-  Phone, Send, Check
+  GraduationCap, Award, Sparkles, Send, Check
 } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaTwitter, FaGlobe } from 'react-icons/fa';
 
@@ -477,12 +476,14 @@ export default function PortfolioRenderer({
               >
                 <Send size={16} /> Send Email
               </a>
-              {contact.phone && (
+              {contact.website && (
                 <a
-                  href={`tel:${contact.phone}`}
+                  href={contact.website}
+                  target="_blank"
+                  rel="noreferrer"
                   className="px-6 py-3.5 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 font-bold text-sm text-gray-300 hover:text-white flex items-center gap-2 transition-colors"
                 >
-                  <Phone size={16} /> {contact.phone}
+                  <Globe size={16} /> Visit Website
                 </a>
               )}
             </div>

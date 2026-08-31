@@ -31,7 +31,7 @@ export default function Login() {
   };
 
   const handleDemoLogin = async () => {
-    setEmail('nejamulhaqueruhaan86@gmail.com');
+    setEmail('nejamulhaque.works@gmail.com');
     setPassword('DemoPass123!');
   };
 
