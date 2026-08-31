@@ -18,6 +18,7 @@ export default function PublicPortfolio() {
   const [isDark, setIsDark] = useState(true);
   const [copied, setCopied] = useState(false);
   const [qrModalOpen, setQrModalOpen] = useState(false);
+  const [pdfGenerating, setPdfGenerating] = useState(false);
 
   useEffect(() => {
     async function fetchPortfolio() {
@@ -95,8 +96,11 @@ export default function PublicPortfolio() {
   }, [username]);
 
   const handleDownloadPDF = () => {
-    // Native print is crisp, vector-rendered, preserves clickable links, and supports modern CSS without canvas oklch errors
-    window.print();
+    setPdfGenerating(true);
+    setTimeout(() => {
+      window.print();
+      setPdfGenerating(false);
+    }, 150);
   };
 
   const copyToClipboard = () => {
