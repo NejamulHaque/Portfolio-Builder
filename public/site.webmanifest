@@ -1,0 +1,20 @@
+{
+  "name": "Portfolio.ai - Developer Portfolio Builder",
+  "short_name": "Portfolio.ai",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#6366F1",
+  "background_color": "#050505",
+  "display": "standalone",
+  "start_url": "/"
+}

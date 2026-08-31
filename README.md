@@ -1,50 +1,141 @@
-# 🚀 Portfolio.ai - The Ultimate Developer Portfolio Builder
+# ⚡ Portfolio.ai — Next-Gen AI Developer Portfolio Builder
 
-**Portfolio.ai** is a modern, AI-powered portfolio builder designed for developers, designers, and creatives. It features a real-time editor, multiple themes (Minimalist, Cyberpunk, Corporate), AI-generated content, and a manual UPI payment verification system with an Admin Dashboard.
+<div align="center">
 
-(https://builderr-ai.vercel.app)
+![Portfolio.ai Banner](/public/logo.png)
 
-## ✨ Features
+[![React](https://img.shields.io/badge/React-19.0-blue?style=for-the-badge&logo=react)](https://react.dev)
+[![Vite](https://img.shields.io/badge/Vite-8.0-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com)
+[![Supabase](https://img.shields.io/badge/Supabase-Database-3ECF8E?style=for-the-badge&logo=supabase)](https://supabase.com)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-Animation-FF0055?style=for-the-badge&logo=framer)](https://www.framer.com/motion/)
 
--   **⚡ Real-Time Editor:** See changes instantly as you type.
--   **🤖 AI Integration (IRUS AI):** Auto-generate professional bios, headlines, and project descriptions.
--   **🎨 Multiple Themes:** Switch between Minimalist, Cyberpunk, and Corporate styles.
--   **💳 Manual Payment System:** UPI QR code payment flow with Admin approval.
--   **🛡️ Admin Dashboard:** Manage subscription requests, approve/reject payments, and view user stats.
--   **📄 PDF Export:** Download your portfolio as a resume PDF.
--   ** Secure Auth:** Supabase Authentication with protected routes.
--   **📱 Responsive:** Looks perfect on mobile and desktop.
+**The most advanced, feature-packed portfolio builder for developers, engineers, and designers.**
+
+[Live Demo](https://builderr-ai.vercel.app/) • [Report Bug](https://github.com/NejamulHaque/Portfolio-Builder/issues) • [Request Feature](https://github.com/NejamulHaque/Portfolio-Builder/issues)
+
+</div>
+
+---
+
+## 🌟 Key Features
+
+- 🧠 **Real-Time AI Writing Engine**: Powered by IRUS AI, auto-generate recruiter-optimized bios, punchy headlines, and impactful project descriptions.
+- 🎨 **6+ Designer Templates**:
+  - **Minimalist**: Clean typography with monochrome elegance.
+  - **Cyberpunk**: Neon magenta/cyan synthwave with glowing matrix elements.
+  - **Corporate Slate**: Executive serif headlines and clean structured cards.
+  - **Retro Terminal**: Hacker CLI green monospace with scanline CRT effects.
+  - **Glassmorphism Luxe**: Ambient frosted glass with radiant background blurs.
+  - **Creative Bento**: Vibrant grid cards with tag pills and badge pins.
+- 🚀 **Interactive Live Playground**: Visitors can test drive themes and developer presets directly on the landing page before registering.
+- 📄 **1-Click PDF Resume Export**: High-fidelity, print-optimized resume stylesheet generation.
+- 📱 **100% Fully Responsive**: Dual-mode mobile editor, viewport preview switchers (Desktop, Tablet, Mobile), and animated navigation drawers.
+- 🔗 **Instant QR Code & Social Sharing**: Generate scannable QR codes for resumes and business cards with one click.
+- 📊 **Digital Identity Score & Analytics**: Real-time completeness checklist and visitor traffic insights.
+- 💾 **JSON Backup & Migration**: Instant 1-click export and import of your entire portfolio.
+- 💳 **UPI Payment Gateway with QR Code**: Seamless upgrade workflow with automatic admin notifications.
+- 🔒 **Enterprise-Grade Auth & Security**: Powered by Supabase PostgreSQL with Row Level Security (RLS).
+
+---
 
 ## 🛠️ Tech Stack
 
--   **Frontend:** React.js, Vite, Tailwind CSS, Framer Motion
--   **Backend/Database:** Supabase (PostgreSQL, Auth, Storage)
--   **AI Engine:** IRUS AI (via Proxy)
--   **Icons:** Lucide React, React Icons
--   **Deployment:** Vercel
+- **Frontend**: React 19, Vite, Tailwind CSS v4, Framer Motion
+- **Icons & UI**: Lucide React, React Icons
+- **Database & Auth**: Supabase (PostgreSQL & Storage)
+- **AI Backend**: IRUS AI LLM Integration
+- **PDF Generation**: `html2pdf.js`
+- **SEO & Meta**: `react-helmet-async`, OpenGraph, Twitter Cards, SVG Favicon
+
+---
 
 ## 🚀 Getting Started
 
-### Prerequisites
+### 1. Clone the repository
+```bash
+git clone https://github.com/NejamulHaque/Portfolio-Builder.git
+cd Portfolio-Builder
+```
 
--   Node.js (v18+)
--   npm or yarn
--   Supabase Account
--   IRUS AI API Key
+### 2. Install dependencies
+```bash
+npm install
+```
 
-# React + Vite
+### 3. Setup environment variables
+Create a `.env` file in the root directory:
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_anon_key
+VITE_IRUS_API_KEY=your_irus_api_key
+```
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+### 4. Run the local development server
+```bash
+npm run dev
+```
 
-Currently, two official plugins are available:
+### 5. Build for production
+```bash
+npm run build
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 📁 Project Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+Portfolio-Builder/
+├── public/
+│   ├── favicon.svg          # Modern gradient SVG favicon
+│   ├── site.webmanifest     # PWA manifest
+│   └── logo.png             # Brand logo & OpenGraph banner
+├── src/
+│   ├── components/
+│   │   ├── Navbar.jsx            # Responsive top nav with mobile drawer
+│   │   ├── Footer.jsx            # Rich footer with newsletter & status
+│   │   ├── PortfolioRenderer.jsx # Universal 6-theme portfolio engine
+│   │   ├── QRCodeModal.jsx       # Dynamic QR code & social share modal
+│   │   ├── SiteNotice.jsx        # Cookie & terms banner
+│   │   └── Toast.jsx             # Animated notification toasts
+│   ├── context/
+│   │   └── AuthContext.jsx       # Supabase session provider
+│   ├── data/
+│   │   └── sampleProfiles.js     # Presets for 1-click loading
+│   ├── lib/
+│   │   └── supabaseClient.js     # Supabase client initialization
+│   ├── pages/
+│   │   ├── LandingPage.jsx       # Interactive hero, live playground & bento grid
+│   │   ├── Dashboard.jsx         # Dual-pane live editor with viewport switcher
+│   │   ├── PublicPortfolio.jsx   # Dynamic public URL with PDF export
+│   │   ├── Profile.jsx           # Identity score, checklist & analytics
+│   │   ├── Pricing.jsx           # UPI checkout modal & plan comparison
+│   │   ├── Admin.jsx             # Subscription verification dashboard
+│   │   ├── Login.jsx             # Authentication with demo quick-fill
+│   │   ├── Register.jsx          # New user registration
+│   │   ├── Legal.jsx             # Privacy Policy & Terms of Service
+│   │   └── NotFound.jsx          # 404 handler
+│   ├── services/
+│   │   └── aiService.js          # AI prompt orchestration
+│   ├── App.jsx                   # Route configuration
+│   ├── index.css                 # Custom scrollbars, scanlines, animations
+│   └── main.jsx                  # Application root
+├── index.html                    # SEO & OpenGraph meta tags
+├── package.json
+└── vite.config.js
+```
 
-## Expanding the Oxlint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## 👨‍💻 Author
+
+**Nejamul Haque**
+- GitHub: [@NejamulHaque](https://github.com/NejamulHaque)
+- Twitter: [@Nejamul_Haque_](https://twitter.com/Nejamul_Haque_)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.

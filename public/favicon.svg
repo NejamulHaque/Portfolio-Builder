@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1" />
+      <stop offset="50%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#EC4899" />
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818CF8" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#F472B6" stop-opacity="0.8" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Rounded Base -->
+  <rect width="512" height="512" rx="128" fill="#0A0A0E" />
+  <rect x="16" y="16" width="480" height="480" rx="112" stroke="url(#bgGrad)" stroke-width="8" stroke-opacity="0.4" fill="none" />
+  
+  <!-- Glow Layer -->
+  <circle cx="256" cy="256" r="140" fill="url(#glowGrad)" opacity="0.15" filter="url(#glow)" />
+  
+  <!-- Modern Stylized 'P' Glyph with AI Sparkle -->
+  <path d="M160 120 H280 C346.274 120 400 173.726 400 240 C400 306.274 346.274 360 280 360 H224 V416 C224 429.255 213.255 440 200 440 H184 C170.745 440 160 429.255 160 416 V120 Z M224 184 V296 H280 C310.928 296 336 270.928 336 240 C336 209.072 310.928 184 280 184 H224 Z" fill="url(#bgGrad)" />
+  
+  <!-- Sparkle Accent Top Right -->
+  <path d="M390 100 Q410 120 430 120 Q410 120 390 140 Q390 120 370 120 Q390 120 390 100 Z" fill="#F43F5E" />
+  <circle cx="430" cy="80" r="8" fill="#A855F7" />
+</svg>
