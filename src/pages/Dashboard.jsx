@@ -63,25 +63,60 @@ export default function Dashboard() {
     try {
       const { data, error } = await supabase.from('portfolios').select('*').eq('id', user.id).single();
       if (data) {
-        setFormData({
-          ...data,
-          skills: typeof data.skills === 'string' ? JSON.parse(data.skills) : data.skills || [],
-          projects: typeof data.projects === 'string' ? JSON.parse(data.projects) : data.projects || [],
-          experience: typeof data.experience === 'string' ? JSON.parse(data.experience) : data.experience || [],
-          education: typeof data.education === 'string' ? JSON.parse(data.education) : data.education || [],
-          certificates: typeof data.certificates === 'string' ? JSON.parse(data.certificates) : data.certificates || [],
-          contact: typeof data.contact === 'string' ? JSON.parse(data.contact) : data.contact || {},
-          socials: typeof data.socials === 'string' ? JSON.parse(data.socials) : data.socials || [],
-          template: data.template || 'minimal'
-        });
+        const skills = typeof data.skills === 'string' ? JSON.parse(data.skills) : data.skills || [];
+        const projects = typeof data.projects === 'string' ? JSON.parse(data.projects) : data.projects || [];
+        const experience = typeof data.experience === 'string' ? JSON.parse(data.experience) : data.experience || [];
+        const education = typeof data.education === 'string' ? JSON.parse(data.education) : data.education || [];
+        const certificates = typeof data.certificates === 'string' ? JSON.parse(data.certificates) : data.certificates || [];
+        const contact = typeof data.contact === 'string' ? JSON.parse(data.contact) : data.contact || {};
+        const socials = typeof data.socials === 'string' ? JSON.parse(data.socials) : data.socials || [];
+        
+        const isNejamul = user.email?.toLowerCase().includes('nejamul') || data.username === 'nejamulhaque';
+        const isBlank = (!skills.length && !projects.length && !experience.length);
+
+        if (isNejamul && isBlank) {
+          const preset = SAMPLE_PROFILES.nejamul;
+          setFormData({
+            ...preset,
+            ...data,
+            name: data.name || preset.name,
+            headline: (data.headline && data.headline !== 'DevSecOps Engineer' && data.headline !== 'Hi') ? data.headline : preset.headline,
+            bio: (data.bio && data.bio !== 'Hi' && data.bio.length > 10) ? data.bio : preset.bio,
+            avatar_url: data.avatar_url || preset.avatar_url,
+            skills: skills.length ? skills : preset.skills,
+            projects: projects.length ? projects : preset.projects,
+            experience: experience.length ? experience : preset.experience,
+            education: education.length ? education : preset.education,
+            certificates: certificates.length ? certificates : preset.certificates,
+            socials: socials.length ? socials : preset.socials,
+            contact: { ...preset.contact, ...(contact || {}) },
+            template: data.template || preset.template
+          });
+        } else {
+          setFormData({
+            ...data,
+            skills,
+            projects,
+            experience,
+            education,
+            certificates,
+            contact,
+            socials,
+            template: data.template || 'minimal'
+          });
+        }
         setIsDark(data.theme !== 'light');
       } else {
-        // Pre-fill username from email if brand new
+        // Pre-fill username & profile from sample if brand new
+        const isNejamul = user.email?.toLowerCase().includes('nejamul');
+        const fallback = isNejamul ? SAMPLE_PROFILES.nejamul : null;
+        
         setFormData(prev => ({
           ...prev,
-          name: user.user_metadata?.full_name || '',
-          username: (user.email?.split('@')[0] || '').toLowerCase().replace(/[^a-z0-9]/g, ''),
-          contact: { ...prev.contact, email: user.email || '' }
+          ...(fallback || {}),
+          name: user.user_metadata?.full_name || fallback?.name || '',
+          username: (user.email?.split('@')[0] || fallback?.username || '').toLowerCase().replace(/[^a-z0-9]/g, ''),
+          contact: { ...(fallback?.contact || prev.contact), email: user.email || fallback?.contact?.email || '' }
         }));
       }
     } catch (err) { 

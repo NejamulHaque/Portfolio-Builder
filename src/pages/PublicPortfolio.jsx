@@ -4,11 +4,11 @@ import { Helmet } from 'react-helmet-async';
 import { supabase } from '../lib/supabaseClient';
 import { 
   Sun, Moon, Copy, Check, Eye as EyeIcon, Download, 
-  Home, QrCode, Loader2
+  Home, QrCode, Loader2, Globe
 } from 'lucide-react';
-import html2pdf from 'html2pdf.js';
 import PortfolioRenderer from '../components/PortfolioRenderer';
 import QRCodeModal from '../components/QRCodeModal';
+import { SAMPLE_PROFILES } from '../data/sampleProfiles';
 
 export default function PublicPortfolio() {
   const { username } = useParams();
@@ -18,7 +18,6 @@ export default function PublicPortfolio() {
   const [isDark, setIsDark] = useState(true);
   const [copied, setCopied] = useState(false);
   const [qrModalOpen, setQrModalOpen] = useState(false);
-  const [pdfGenerating, setPdfGenerating] = useState(false);
 
   useEffect(() => {
     async function fetchPortfolio() {
@@ -29,27 +28,65 @@ export default function PublicPortfolio() {
           .eq('username', username)
           .single();
           
-        if (error) throw error;
-        
-        const parsedData = {
-          ...userData,
-          skills: typeof userData.skills === 'string' ? JSON.parse(userData.skills) : userData.skills || [],
-          projects: typeof userData.projects === 'string' ? JSON.parse(userData.projects) : userData.projects || [],
-          experience: typeof userData.experience === 'string' ? JSON.parse(userData.experience) : userData.experience || [],
-          education: typeof userData.education === 'string' ? JSON.parse(userData.education) : userData.education || [],
-          certificates: typeof userData.certificates === 'string' ? JSON.parse(userData.certificates) : userData.certificates || [],
-          contact: typeof userData.contact === 'string' ? JSON.parse(userData.contact) : userData.contact || {},
-          socials: typeof userData.socials === 'string' ? JSON.parse(userData.socials) : userData.socials || []
-        };
+        let parsedData = null;
+
+        if (userData && !error) {
+          parsedData = {
+            ...userData,
+            skills: typeof userData.skills === 'string' ? JSON.parse(userData.skills) : userData.skills || [],
+            projects: typeof userData.projects === 'string' ? JSON.parse(userData.projects) : userData.projects || [],
+            experience: typeof userData.experience === 'string' ? JSON.parse(userData.experience) : userData.experience || [],
+            education: typeof userData.education === 'string' ? JSON.parse(userData.education) : userData.education || [],
+            certificates: typeof userData.certificates === 'string' ? JSON.parse(userData.certificates) : userData.certificates || [],
+            contact: typeof userData.contact === 'string' ? JSON.parse(userData.contact) : userData.contact || {},
+            socials: typeof userData.socials === 'string' ? JSON.parse(userData.socials) : userData.socials || []
+          };
+        }
+
+        // Intelligently hydrate with default preset if profile was created without details or is Nejamul
+        const isNejamul = username === 'nejamulhaque' || username === 'nejamul';
+        const hasMinimalData = !parsedData || (!parsedData.skills?.length && !parsedData.projects?.length && !parsedData.experience?.length);
+
+        if (isNejamul || hasMinimalData) {
+          const fallback = isNejamul || !parsedData ? SAMPLE_PROFILES.nejamul : SAMPLE_PROFILES[username] || SAMPLE_PROFILES.nejamul;
+          parsedData = {
+            ...fallback,
+            ...(parsedData || {}),
+            name: parsedData?.name || fallback.name,
+            headline: (parsedData?.headline && parsedData.headline !== 'DevSecOps Engineer' && parsedData.headline !== 'Hi') ? parsedData.headline : fallback.headline,
+            bio: (parsedData?.bio && parsedData.bio !== 'Hi' && parsedData.bio.length > 10) ? parsedData.bio : fallback.bio,
+            avatar_url: parsedData?.avatar_url || fallback.avatar_url,
+            location: parsedData?.location || fallback.location,
+            skills: parsedData?.skills?.length ? parsedData.skills : fallback.skills,
+            experience: parsedData?.experience?.length ? parsedData.experience : fallback.experience,
+            projects: parsedData?.projects?.length ? parsedData.projects : fallback.projects,
+            education: parsedData?.education?.length ? parsedData.education : fallback.education,
+            certificates: parsedData?.certificates?.length ? parsedData.certificates : fallback.certificates,
+            socials: parsedData?.socials?.length ? parsedData.socials : fallback.socials,
+            contact: { ...fallback.contact, ...(parsedData?.contact || {}) },
+            template: parsedData?.template || fallback.template
+          };
+        }
         
         setData(parsedData);
         setIsDark(parsedData.theme !== 'light');
         
-        if (userData) {
-          supabase.rpc('increment_views', { portfolio_id: userData.id }).catch(() => {});
+        if (userData?.id) {
+          try {
+            await supabase.rpc('increment_views', { portfolio_id: userData.id });
+          } catch (_) {
+            // Ignore RPC failure if increment_views is not defined in DB
+          }
         }
       } catch (err) { 
-        console.error(err); 
+        console.error(err);
+        if (username === 'nejamulhaque' || username === 'nejamul') {
+          setData(SAMPLE_PROFILES.nejamul);
+          setIsDark(true);
+        } else if (SAMPLE_PROFILES[username]) {
+          setData(SAMPLE_PROFILES[username]);
+          setIsDark(true);
+        }
       } finally { 
         setLoading(false); 
       }
@@ -58,27 +95,8 @@ export default function PublicPortfolio() {
   }, [username]);
 
   const handleDownloadPDF = () => {
-    const element = document.getElementById('portfolio-content');
-    if (!element) {
-      alert("Could not find content to print.");
-      return;
-    }
-    
-    setPdfGenerating(true);
-    const opt = {
-      margin: 0.4,
-      filename: `${data?.name?.toLowerCase().replace(/\s+/g, '-') || 'portfolio'}-resume.pdf`,
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true, logging: false },
-      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-    };
-
-    html2pdf().set(opt).from(element).save().then(() => {
-      setPdfGenerating(false);
-    }).catch(err => {
-      console.error(err);
-      setPdfGenerating(false);
-    });
+    // Native print is crisp, vector-rendered, preserves clickable links, and supports modern CSS without canvas oklch errors
+    window.print();
   };
 
   const copyToClipboard = () => {
