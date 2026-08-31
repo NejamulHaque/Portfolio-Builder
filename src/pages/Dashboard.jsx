@@ -288,11 +288,11 @@ export default function Dashboard() {
             <Link to="/" className="flex items-center gap-2 group cursor-pointer" title="Go to Homepage">
               <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 p-[1px]">
                 <div className="w-full h-full bg-[#0a0a0f] rounded-xl flex items-center justify-center">
-                  <img src="/favicon.svg" alt="Portfolio.ai" className="w-4 h-4" />
+                  <img src="/favicon.svg" alt="Portfolio Builder" className="w-4 h-4" />
                 </div>
               </div>
               <span className="font-bold text-lg tracking-tight hidden sm:block">
-                Portfolio<span className="text-indigo-400">.ai</span>
+                Portfolio<span className="text-indigo-400"> Builder</span>
               </span>
             </Link>
 
@@ -301,6 +301,9 @@ export default function Dashboard() {
             {/* Preset Loaders Dropdown */}
             <div className="hidden sm:flex items-center gap-1">
               <span className="text-xs text-gray-500 font-bold uppercase tracking-wider pl-2">Load Preset:</span>
+              <button onClick={() => handleLoadPreset('nejamul')} className="px-2.5 py-1 rounded-lg bg-indigo-500/20 text-indigo-300 hover:bg-indigo-500/30 text-xs font-bold transition-colors">
+                Nejamul (DevSecOps)
+              </button>
               <button onClick={() => handleLoadPreset('fullstack')} className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-xs text-gray-300 font-medium transition-colors">
                 Fullstack
               </button>

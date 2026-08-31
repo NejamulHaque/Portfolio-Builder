@@ -36,7 +36,7 @@ export default function Register() {
           theme: 'dark'
         }).catch(() => {});
       }
-      toast.success('Account created! Welcome to Portfolio.ai');
+      toast.success('Account created! Welcome to Portfolio Builder');
       navigate('/dashboard');
     } catch (err) {
       setError(err.message);

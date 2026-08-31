@@ -1,8 +1,8 @@
-# ⚡ Portfolio.ai — Next-Gen AI Developer Portfolio Builder
+# ⚡ Portfolio Builder — Next-Gen AI Developer Portfolio Platform
 
 <div align="center">
 
-![Portfolio.ai Banner](/public/logo.png)
+![Portfolio Builder Banner](/public/logo.png)
 
 [![React](https://img.shields.io/badge/React-19.0-blue?style=for-the-badge&logo=react)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-8.0-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev)

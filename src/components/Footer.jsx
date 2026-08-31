@@ -32,11 +32,11 @@ export default function Footer() {
             <Link to="/" className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 p-[1px]">
                 <div className="w-full h-full bg-[#0a0a0f] rounded-xl flex items-center justify-center">
-                  <img src="/favicon.svg" alt="Portfolio.ai" className="w-4 h-4" />
+                  <img src="/favicon.svg" alt="Portfolio Builder" className="w-4 h-4" />
                 </div>
               </div>
               <span className="font-black text-xl tracking-tight text-white">
-                Portfolio<span className="text-indigo-400">.ai</span>
+                Portfolio<span className="text-indigo-400"> Builder</span>
               </span>
             </Link>
             
@@ -138,7 +138,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
           <div className="flex items-center gap-2">
-            <span>&copy; {new Date().getFullYear()} Portfolio.ai. Crafted with</span>
+            <span>&copy; {new Date().getFullYear()} Portfolio Builder. Crafted with</span>
             <Heart size={14} className="text-rose-500 fill-rose-500 inline" />
             <span>by</span>
             <a

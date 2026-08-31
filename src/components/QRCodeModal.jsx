@@ -34,7 +34,7 @@ export default function QRCodeModal({ isOpen, onClose, url, title = 'Share Portf
   };
 
   const encodedUrl = encodeURIComponent(url);
-  const shareText = encodeURIComponent(`Check out my developer portfolio built with Portfolio.ai: ${url}`);
+  const shareText = encodeURIComponent(`Check out my developer portfolio built with Portfolio Builder: ${url}`);
 
   return (
     <AnimatePresence>

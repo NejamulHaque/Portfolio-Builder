@@ -30,14 +30,14 @@ export default function Navbar() {
           <div className="relative">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 p-[1px] shadow-lg shadow-indigo-500/20 group-hover:shadow-indigo-500/40 transition-all">
               <div className="w-full h-full bg-[#0a0a0f] rounded-xl flex items-center justify-center">
-                <img src="/favicon.svg" alt="Portfolio.ai" className="w-5 h-5" />
+                <img src="/favicon.svg" alt="Portfolio Builder" className="w-5 h-5" />
               </div>
             </div>
             <div className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400 rounded-full border-2 border-[#050505] animate-pulse"></div>
           </div>
           <div className="flex flex-col">
             <span className="font-black text-lg sm:text-xl tracking-tight text-white flex items-center gap-1">
-              Portfolio<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">.ai</span>
+              Portfolio<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400"> Builder</span>
             </span>
           </div>
         </Link>

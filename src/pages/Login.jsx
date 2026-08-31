@@ -31,7 +31,7 @@ export default function Login() {
   };
 
   const handleDemoLogin = async () => {
-    setEmail('demo.developer@portfolio.ai');
+    setEmail('nejamulhaqueruhaan86@gmail.com');
     setPassword('DemoPass123!');
   };
 

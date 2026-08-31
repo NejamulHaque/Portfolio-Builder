@@ -1,6 +1,86 @@
 // Pre-built developer profiles for 1-click demo loads and landing page simulator
 
 export const SAMPLE_PROFILES = {
+  nejamul: {
+    id: 'sample-nejamul',
+    name: 'Nejamul Haque',
+    username: 'nejamulhaque',
+    headline: 'Computer Science Undergraduate | DevSecOps Aspirant',
+    bio: 'Motivated Computer Science undergraduate specializing in backend architecture, system administration, and infrastructure automation. Strong foundational knowledge in Linux environments, network protocols, version control workflows, and DevSecOps engineering.',
+    avatar_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
+    location: 'Bettiah, Bihar, India',
+    theme: 'dark',
+    template: 'cyberpunk',
+    skills: [
+      { category: 'System & Infrastructure', skills: ['Linux (Ubuntu)', 'Bash Scripting', 'System Permissions', 'Process Management'] },
+      { category: 'Networking & Security', skills: ['TCP/IP Stack', 'DNS', 'HTTP/HTTPS', 'SSH Key Management', 'Ports & Firewalls', 'OSI Model'] },
+      { category: 'Development & Database', skills: ['JavaScript', 'Node.js', 'Express.js', 'MongoDB (MERN)', 'REST APIs'] },
+      { category: 'Tools & Version Control', skills: ['Git', 'GitHub', 'Branching & Merging Workflows', 'CI/CD'] },
+      { category: 'AI & Machine Learning', skills: ['Generative AI Integration', 'Prompt Engineering', 'AI API Consumption', 'Python'] }
+    ],
+    experience: [
+      {
+        company: 'Self-Directed Systems & Infrastructure Learning',
+        role: 'Systems & Security Practitioner',
+        duration: 'March 2026',
+        desc: 'Built a local sandbox to master Linux system administration, permissions, and CLI operations. Conducted deep dives into networking protocols (TCP/IP, DNS, SSH, Firewalls) and data routing. Managed personal project repositories independently using structured Git workflows.'
+      }
+    ],
+    education: [
+      { 
+        degree: 'B.Tech in Computer Science (Honors)', 
+        school: 'Teerthanker Mahaveer University (Moradabad, UP)', 
+        year: '2023 – 2027' 
+      },
+      { 
+        degree: 'Higher Secondary Education (12th Grade) - Academic Excellence Award', 
+        school: 'Bihar State Education Board (Patna, Bihar)', 
+        year: '2021 – 2023' 
+      }
+    ],
+    certificates: [
+      { title: 'MongoDB Associate Developer', issuer: 'MongoDB University', date: '2025' },
+      { title: 'GitHub Actions Certified', issuer: 'GitHub', date: '2026' },
+      { title: 'Anthropic Claude Developer', issuer: 'Anthropic', date: '2026' },
+      { title: 'Introduction to Generative AI', issuer: 'Google Cloud', date: '2024' }
+    ],
+    projects: [
+      {
+        title: 'Linux System Administration & Automation Lab',
+        description: 'Configured a local Linux environment to practice file system security, user privilege management, and process monitoring. Developed custom Bash automation scripts to manage local files, check system uptime, and monitor authentication logs for security awareness.',
+        tags: ['Linux', 'Ubuntu', 'Bash', 'System Security', 'Automation'],
+        repoLink: 'https://github.com/NejamulHaque',
+        demoLink: 'https://nejamulhaque.vercel.app/'
+      },
+      {
+        title: 'Network Security & Connectivity Lab',
+        description: 'Built local networking scenarios to test port configurations, firewall rules, and secure communication lines. Configured and hardened secure remote access via SSH key pairs, eliminating password vulnerabilities on local test environments.',
+        tags: ['Networking', 'TCP/IP', 'Firewalls', 'SSH Hardening', 'Security'],
+        repoLink: 'https://github.com/NejamulHaque',
+        demoLink: 'https://nejamulhaque.vercel.app/'
+      },
+      {
+        title: 'AI-Powered Document Classifier (Capstone)',
+        description: 'Built an AI-powered document classifier using Python and a pre-trained NLP model, deployed as a REST API integrated into a React frontend for high-accuracy categorization.',
+        tags: ['Python', 'NLP', 'React', 'REST API', 'Generative AI', 'FastAPI'],
+        repoLink: 'https://github.com/NejamulHaque',
+        demoLink: 'https://nejamulhaque.vercel.app/'
+      }
+    ],
+    contact: {
+      email: 'nejamulhaqueruhaan86@gmail.com',
+      phone: '+91-6299676007',
+      website: 'https://nejamulhaque.vercel.app/',
+      location: 'Bettiah, Bihar, India'
+    },
+    socials: [
+      { platform: 'github', url: 'https://github.com/NejamulHaque' },
+      { platform: 'linkedin', url: 'https://www.linkedin.com/in/nejamulhaque/' },
+      { platform: 'website', url: 'https://nejamulhaque.vercel.app/' }
+    ],
+    views: 1850
+  },
+
   fullstack: {
     id: 'sample-fullstack',
     name: 'Alex Rivera',
@@ -10,7 +90,7 @@ export const SAMPLE_PROFILES = {
     avatar_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
     location: 'San Francisco, CA',
     theme: 'dark',
-    template: 'cyberpunk',
+    template: 'minimal',
     skills: [
       { category: 'Frontend', skills: ['React 19', 'Next.js 15', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Three.js'] },
       { category: 'Backend & Cloud', skills: ['Node.js', 'Go', 'GraphQL', 'PostgreSQL', 'Redis', 'Docker', 'AWS Lambda', 'Kubernetes'] },
@@ -51,13 +131,6 @@ export const SAMPLE_PROFILES = {
         tags: ['React', 'TypeScript', 'WebGL', 'AI/LLM', 'Tailwind'],
         repoLink: 'https://github.com/alexrivera/neural-canvas',
         demoLink: 'https://neuralcanvas.ai'
-      },
-      {
-        title: 'VaultZero - Distributed Secret Manager',
-        description: 'Zero-knowledge end-to-end encrypted secret store designed for multi-region microservice deployments.',
-        tags: ['Go', 'PostgreSQL', 'Cryptography', 'gRPC'],
-        repoLink: 'https://github.com/alexrivera/vaultzero',
-        demoLink: 'https://vaultzero.io'
       }
     ],
     contact: {
@@ -96,20 +169,13 @@ export const SAMPLE_PROFILES = {
         role: 'Lead ML Research Engineer',
         duration: '2023 - Present',
         desc: 'Designed reasoning evaluation benchmarks and token-efficient KV-cache optimization algorithms for production LLMs.'
-      },
-      {
-        company: 'Microsoft AI',
-        role: 'Senior Machine Learning Scientist',
-        duration: '2021 - 2023',
-        desc: 'Fine-tuned code-generation transformer models that improved Copilot code completion acceptance rate by 18%.'
       }
     ],
     education: [
       { degree: 'Ph.D. in Artificial Intelligence', school: 'Stanford University', year: '2017 - 2021' }
     ],
     certificates: [
-      { title: 'NeurIPS Outstanding Paper Award', issuer: 'NeurIPS', date: '2023' },
-      { title: 'Google Cloud Certified Professional ML Engineer', issuer: 'Google', date: '2022' }
+      { title: 'NeurIPS Outstanding Paper Award', issuer: 'NeurIPS', date: '2023' }
     ],
     projects: [
       {
@@ -118,13 +184,6 @@ export const SAMPLE_PROFILES = {
         tags: ['Python', 'PyTorch', 'FastAPI', 'LangChain', 'VectorDB'],
         repoLink: 'https://github.com/mayalin/agent-matrix',
         demoLink: 'https://agentmatrix.ai'
-      },
-      {
-        title: 'SynapseVision - Realtime Multimodal OCR',
-        description: 'Ultra-fast vision transformer capable of parsing complex technical diagrams into executable LaTeX & SVG graphs.',
-        tags: ['CUDA', 'Python', 'Computer Vision', 'React'],
-        repoLink: 'https://github.com/mayalin/synapse-vision',
-        demoLink: 'https://synapse.dev'
       }
     ],
     contact: {
@@ -152,8 +211,7 @@ export const SAMPLE_PROFILES = {
     template: 'bento',
     skills: [
       { category: 'Product Design', skills: ['Figma', 'Design Systems', 'Spatial UI', 'User Research', 'Prototyping', 'Micro-interactions'] },
-      { category: 'Creative Tech', skills: ['React', 'CSS/Tailwind', 'Three.js', 'Spline 3D', 'GLSL Shaders', 'Framer'] },
-      { category: 'Strategy', skills: ['Product Discovery', 'Design Sprints', 'Accessibility (a11y)', 'Brand Identity'] }
+      { category: 'Creative Tech', skills: ['React', 'CSS/Tailwind', 'Three.js', 'Spline 3D', 'GLSL Shaders', 'Framer'] }
     ],
     experience: [
       {
@@ -161,20 +219,13 @@ export const SAMPLE_PROFILES = {
         role: 'Staff Product Designer',
         duration: '2022 - Present',
         desc: 'Spearheaded the redesign of developer mode inspection tools and component variant tokens across desktop and web.'
-      },
-      {
-        company: 'Apple Design Studio',
-        role: 'Senior UI/UX Interaction Designer',
-        duration: '2019 - 2022',
-        desc: 'Designed fluid gestures and spatial interaction paradigms for visionOS system experiences.'
       }
     ],
     education: [
       { degree: 'M.A. in Interaction Design', school: 'Royal College of Art, London', year: '2017 - 2019' }
     ],
     certificates: [
-      { title: 'Apple Design Award Nominee', issuer: 'Apple', date: '2023' },
-      { title: 'D&AD Yellow Pencil in Digital Design', issuer: 'D&AD', date: '2022' }
+      { title: 'Apple Design Award Nominee', issuer: 'Apple', date: '2023' }
     ],
     projects: [
       {
@@ -183,13 +234,6 @@ export const SAMPLE_PROFILES = {
         tags: ['Figma', 'Design Tokens', 'React', 'Three.js', 'a11y'],
         repoLink: 'https://github.com/elena/prism-ui',
         demoLink: 'https://prism.design'
-      },
-      {
-        title: 'Aura Spatial Audio Player',
-        description: 'A minimalist ambient audio workstation for deep focus with spatial 3D audio panning and generative visualizers.',
-        tags: ['Web Audio API', 'React', 'Tailwind', 'Canvas'],
-        repoLink: 'https://github.com/elena/aura-player',
-        demoLink: 'https://aura-audio.app'
       }
     ],
     contact: {
@@ -200,8 +244,7 @@ export const SAMPLE_PROFILES = {
     socials: [
       { platform: 'github', url: 'https://github.com' },
       { platform: 'linkedin', url: 'https://linkedin.com' },
-      { platform: 'twitter', url: 'https://twitter.com' },
-      { platform: 'website', url: 'https://elenarostova.design' }
+      { platform: 'twitter', url: 'https://twitter.com' }
     ],
     views: 3190
   }

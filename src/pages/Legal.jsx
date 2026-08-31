@@ -59,7 +59,7 @@ export default function Legal() {
               <>
                 <section className="space-y-2">
                   <h2 className="text-lg font-bold text-white">1. Acceptance of Terms</h2>
-                  <p>By accessing or utilizing Portfolio.ai services, you agree to comply with and be bound by these Terms of Service. If you do not agree to these terms, please do not use the service.</p>
+                  <p>By accessing or utilizing Portfolio Builder services, you agree to comply with and be bound by these Terms of Service. If you do not agree to these terms, please do not use the service.</p>
                 </section>
 
                 <section className="space-y-2">

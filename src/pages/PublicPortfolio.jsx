@@ -129,7 +129,7 @@ export default function PublicPortfolio() {
       <Helmet>
         <title>{data.name} | {data.headline || 'Developer Portfolio'}</title>
         <meta name="description" content={data.bio || `${data.name}'s professional developer portfolio.`} />
-        <meta property="og:title" content={`${data.name} | Portfolio.ai`} />
+        <meta property="og:title" content={`${data.name} | Portfolio Builder`} />
         <meta property="og:description" content={data.headline || data.bio} />
         <meta property="og:image" content={data.avatar_url || '/logo.png'} />
         <meta property="og:url" content={currentUrl} />
@@ -147,7 +147,7 @@ export default function PublicPortfolio() {
           <Link 
             to="/" 
             className="p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-colors" 
-            title="Portfolio.ai Homepage"
+            title="Portfolio Builder Homepage"
           >
             <Home size={18} />
           </Link>
@@ -211,7 +211,7 @@ export default function PublicPortfolio() {
       }`}>
         <div className="flex items-center justify-center gap-2 mb-2">
           <span className="text-xs font-mono">Built & Hosted with</span>
-          <Link to="/" className="text-xs font-bold text-indigo-400 hover:underline">Portfolio.ai</Link>
+          <Link to="/" className="text-xs font-bold text-indigo-400 hover:underline">Portfolio Builder</Link>
         </div>
         <p className="text-[10px] uppercase font-bold tracking-widest opacity-60">&copy; {new Date().getFullYear()} All Rights Reserved</p>
       </footer>

@@ -126,7 +126,7 @@ export default function Profile() {
             <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center font-bold text-xs text-white">
               <img src="/favicon.svg" alt="P" className="w-4 h-4" />
             </div>
-            <span className="font-bold text-lg tracking-tight">Portfolio<span className="text-indigo-400">.ai</span></span>
+            <span className="font-bold text-lg tracking-tight">Portfolio<span className="text-indigo-400"> Builder</span></span>
           </div>
 
           <div className="flex items-center gap-3">

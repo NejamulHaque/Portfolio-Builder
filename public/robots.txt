@@ -1,8 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /dashboard
+Disallow: /admin
 Disallow: /profile
-Disallow: /login
-Disallow: /register
 
-Sitemap: https://portfolio-builder.vercel.app/sitemap.xml
+Sitemap: https://builderr-ai.vercel.app/sitemap.xml

@@ -22,12 +22,12 @@ const TEMPLATE_OPTIONS = [
 ];
 
 export default function LandingPage() {
-  const [selectedPersona, setSelectedPersona] = useState('fullstack');
+  const [selectedPersona, setSelectedPersona] = useState('nejamul');
   const [activeTemplate, setActiveTemplate] = useState('cyberpunk');
   const [openFaq, setOpenFaq] = useState(null);
 
   const currentProfile = {
-    ...SAMPLE_PROFILES[selectedPersona],
+    ...SAMPLE_PROFILES[selectedPersona || 'nejamul'],
     template: activeTemplate
   };
 
@@ -142,11 +142,12 @@ export default function LandingPage() {
           {/* Persona Selectors */}
           <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2 text-xs font-bold uppercase text-gray-400 tracking-wider">
-              <span>Sample Role:</span>
+              <span>Sample Profile:</span>
               <div className="flex flex-wrap gap-2">
                 {[
-                  { id: 'fullstack', label: 'Full Stack Dev' },
-                  { id: 'ai', label: 'AI Engineer' },
+                  { id: 'nejamul', label: 'Nejamul Haque (DevSecOps)' },
+                  { id: 'fullstack', label: 'Full Stack Engineer' },
+                  { id: 'ai', label: 'AI Specialist' },
                   { id: 'designer', label: 'Product Designer' },
                 ].map(p => (
                   <button
@@ -200,7 +201,7 @@ export default function LandingPage() {
 
             <div className="px-4 py-1 rounded-lg bg-black/40 border border-white/5 text-xs text-gray-400 font-mono flex items-center gap-2">
               <span className="text-emerald-400">https://</span>
-              <span>portfolio.ai/preview/{currentProfile.username}</span>
+              <span>builderr-ai.vercel.app/portfolio/{currentProfile.username}</span>
             </div>
 
             <Link
@@ -492,13 +493,13 @@ export default function LandingPage() {
       <section id="faq" className="py-24 px-4 sm:px-6 max-w-4xl mx-auto border-t border-white/5 scroll-mt-24">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-5xl font-bold mb-4">Frequently Asked Questions</h2>
-          <p className="text-gray-400 text-sm sm:text-base">Everything you need to know about Portfolio.ai</p>
+          <p className="text-gray-400 text-sm sm:text-base">Everything you need to know about Portfolio Builder</p>
         </div>
 
         <div className="space-y-4">
           {[
             {
-              q: "Is Portfolio.ai free to get started?",
+              q: "Is Portfolio Builder free to get started?",
               a: "Yes! Our core builder, all 6 designer templates, real-time live preview, and basic AI bio tools are 100% free forever. We also offer a Pro Developer upgrade for unlimited deployments and custom domains."
             },
             {
@@ -562,7 +563,7 @@ export default function LandingPage() {
             </span>
           </h2>
           <p className="text-base sm:text-xl text-gray-400 mb-10 max-w-xl mx-auto">
-            Join thousands of software engineers, architects, and designers who build their public portfolios with Portfolio.ai.
+            Join thousands of software engineers, architects, and designers who build their public portfolios with Portfolio Builder.
           </p>
           <Link
             to="/register"
