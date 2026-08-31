@@ -119,7 +119,6 @@ export default function Footer() {
               <li><a href="https://github.com/NejamulHaque/Portfolio-Builder" target="_blank" rel="noreferrer" className="hover:text-white transition-colors flex items-center gap-1">GitHub Repo <ExternalLink size={12}/></a></li>
               <li><a href="/#faq" className="hover:text-white transition-colors">FAQ & Support</a></li>
               <li><Link to="/login" className="hover:text-white transition-colors">User Sign In</Link></li>
-              <li><Link to="/admin" className="hover:text-white transition-colors">Admin Portal</Link></li>
             </ul>
           </div>
 
