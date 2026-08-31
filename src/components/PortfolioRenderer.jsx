@@ -4,6 +4,7 @@ import {
   GraduationCap, Award, Sparkles, Send, Check
 } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaTwitter, FaGlobe } from 'react-icons/fa';
+import { SAMPLE_PROFILES } from '../data/sampleProfiles';
 
 const SOCIAL_ICONS = {
   github: <FaGithub size={18} />,
@@ -22,19 +23,21 @@ export default function PortfolioRenderer({
   const [selectedTag, setSelectedTag] = useState(activeTagFilter);
   const [copiedEmail, setCopiedEmail] = useState(false);
 
-  const template = data?.template || 'minimal';
-  const name = data?.name || 'Your Name';
-  const headline = data?.headline || 'Professional Headline';
-  const bio = data?.bio || 'Write a captivating bio highlighting your expertise and vision...';
-  const avatar = data?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=6366f1&color=fff`;
-  const location = data?.location || data?.contact?.location;
-  const socials = data?.socials || [];
-  const skills = data?.skills || [];
-  const experience = data?.experience || [];
-  const projects = data?.projects || [];
-  const education = data?.education || [];
-  const certificates = data?.certificates || [];
-  const contact = data?.contact || {};
+  const fallback = SAMPLE_PROFILES.nejamul;
+
+  const template = data?.template || fallback.template;
+  const name = data?.name || fallback.name;
+  const headline = data?.headline || fallback.headline;
+  const bio = (data?.bio && data.bio !== 'Hi') ? data.bio : fallback.bio;
+  const avatar = data?.avatar_url || fallback.avatar_url;
+  const location = data?.location || data?.contact?.location || fallback.location;
+  const socials = (data?.socials && data.socials.length > 0) ? data.socials : fallback.socials;
+  const skills = (data?.skills && data.skills.length > 0) ? data.skills : fallback.skills;
+  const experience = (data?.experience && data.experience.length > 0) ? data.experience : fallback.experience;
+  const projects = (data?.projects && data.projects.length > 0) ? data.projects : fallback.projects;
+  const education = (data?.education && data.education.length > 0) ? data.education : fallback.education;
+  const certificates = (data?.certificates && data.certificates.length > 0) ? data.certificates : fallback.certificates;
+  const contact = { ...fallback.contact, ...(data?.contact || {}) };
 
   // Handle Tag Filter
   const handleTagClick = (tag) => {
