@@ -62,8 +62,8 @@ export default function Dashboard() {
 
   const fetchPortfolio = async () => {
     try {
-      const { data, error } = await supabase.from('portfolios').select('*').eq('id', user.id).single();
-      if (data) {
+      const { data, error } = await supabase.from('portfolios').select('*').eq('id', user.id).maybeSingle();
+      if (data && !error) {
         const skills = typeof data.skills === 'string' ? JSON.parse(data.skills) : data.skills || [];
         const projects = typeof data.projects === 'string' ? JSON.parse(data.projects) : data.projects || [];
         const experience = typeof data.experience === 'string' ? JSON.parse(data.experience) : data.experience || [];
@@ -108,20 +108,21 @@ export default function Dashboard() {
         }
         setIsDark(data.theme !== 'light');
       } else {
-        // Pre-fill username & profile from sample if brand new
+        // Fallback for new user without database record yet
         const isNejamul = user.email?.toLowerCase().includes('nejamul');
-        const fallback = isNejamul ? SAMPLE_PROFILES.nejamul : null;
-        
-        setFormData(prev => ({
-          ...prev,
-          ...(fallback || {}),
-          name: user.user_metadata?.full_name || fallback?.name || '',
-          username: (user.email?.split('@')[0] || fallback?.username || '').toLowerCase().replace(/[^a-z0-9]/g, ''),
-          contact: { ...(fallback?.contact || prev.contact), email: user.email || fallback?.contact?.email || '' }
-        }));
+        const fallback = isNejamul ? SAMPLE_PROFILES.nejamul : {
+          ...SAMPLE_PROFILES.alex,
+          name: user.user_metadata?.full_name || 'Developer',
+          username: (user.email?.split('@')[0] || 'developer').toLowerCase().replace(/[^a-z0-9_-]/g, ''),
+          contact: { email: user.email || '', website: '', location: '' }
+        };
+        setFormData(fallback);
       }
-    } catch (err) { 
-      console.error(err); 
+    } catch (_) {
+      // Graceful fallback on network glitch
+      if (user.email?.toLowerCase().includes('nejamul')) {
+        setFormData(SAMPLE_PROFILES.nejamul);
+      }
     }
   };
 
@@ -288,16 +289,50 @@ export default function Dashboard() {
     }
     setLoading(true);
     try {
-      const { error } = await supabase.from('portfolios').upsert({ 
-        id: user.id, 
-        ...formData, 
+      const sanitizedUsername = (formData.username || 'developer').trim().toLowerCase().replace(/[^a-z0-9_-]/g, '');
+      
+      const payload = {
+        id: user.id,
+        username: sanitizedUsername,
+        name: formData.name || 'Developer',
+        headline: formData.headline || '',
+        bio: formData.bio || '',
+        avatar_url: formData.avatar_url || '',
+        location: formData.location || '',
+        template: formData.template || 'minimal',
         theme: isDark ? 'dark' : 'light',
-        updated_at: new Date().toISOString() 
-      });
+        skills: formData.skills || [],
+        projects: formData.projects || [],
+        experience: formData.experience || [],
+        education: formData.education || [],
+        certificates: formData.certificates || [],
+        contact: formData.contact || {},
+        socials: formData.socials || [],
+        updated_at: new Date().toISOString()
+      };
+
+      let { error } = await supabase.from('portfolios').upsert(payload, { onConflict: 'id' });
+
+      // If database columns are text rather than jsonb, retry with serialized JSON
+      if (error && (error.code === '42804' || (error.message && (error.message.includes('text') || error.message.includes('json'))))) {
+        const stringifiedPayload = {
+          ...payload,
+          skills: JSON.stringify(payload.skills),
+          projects: JSON.stringify(payload.projects),
+          experience: JSON.stringify(payload.experience),
+          education: JSON.stringify(payload.education),
+          certificates: JSON.stringify(payload.certificates),
+          contact: JSON.stringify(payload.contact),
+          socials: JSON.stringify(payload.socials)
+        };
+        const retryResult = await supabase.from('portfolios').upsert(stringifiedPayload, { onConflict: 'id' });
+        error = retryResult.error;
+      }
+
       if (error) throw error;
       toast.success('🚀 Portfolio deployed and live!');
     } catch (e) { 
-      toast.error(e.message); 
+      toast.error(e.message || 'Failed to deploy portfolio'); 
     } finally { 
       setLoading(false); 
     }

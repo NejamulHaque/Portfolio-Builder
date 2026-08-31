@@ -27,7 +27,7 @@ export default function PublicPortfolio() {
           .from('portfolios')
           .select('*')
           .eq('username', username)
-          .single();
+          .maybeSingle();
           
         let parsedData = null;
 

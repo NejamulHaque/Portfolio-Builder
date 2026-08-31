@@ -10,6 +10,7 @@ import {
 import QRCodeModal from '../components/QRCodeModal';
 import { useToast } from '../components/Toast';
 import { Helmet } from 'react-helmet-async';
+import { SAMPLE_PROFILES } from '../data/sampleProfiles';
 
 export default function Profile() {
   const { user, logout } = useAuth();
@@ -35,8 +36,8 @@ export default function Profile() {
 
   const fetchPortfolio = async () => {
     try {
-      const { data } = await supabase.from('portfolios').select('*').eq('id', user.id).single();
-      if (data) {
+      const { data, error } = await supabase.from('portfolios').select('*').eq('id', user.id).maybeSingle();
+      if (data && !error) {
         setFormData({
           ...data,
           skills: typeof data.skills === 'string' ? JSON.parse(data.skills) : data.skills || [],
@@ -47,9 +48,18 @@ export default function Profile() {
           socials: typeof data.socials === 'string' ? JSON.parse(data.socials) : data.socials || [],
         });
         setIsDark(data.theme !== 'light');
+      } else {
+        // Fallback to rich Nejamul profile or starter details
+        const isNejamul = user.email?.toLowerCase().includes('nejamul');
+        const fallback = isNejamul ? SAMPLE_PROFILES.nejamul : {
+          ...SAMPLE_PROFILES.alex,
+          name: user.user_metadata?.full_name || 'Developer',
+          username: user.email.split('@')[0].toLowerCase().replace(/[^a-z0-9_-]/g, '')
+        };
+        setFormData(fallback);
       }
-    } catch (err) { 
-      console.error(err); 
+    } catch (_) { 
+      // Silent catch
     }
   };
 

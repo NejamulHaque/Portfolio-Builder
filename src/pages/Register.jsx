@@ -28,14 +28,25 @@ export default function Register() {
       if (error) throw error;
       
       if (data.user) {
-        const username = email.split('@')[0].toLowerCase().replace(/[^a-z0-9_-]/g, '');
-        await supabase.from('portfolios').insert({
-          id: data.user.id,
-          name: name,
-          username: username,
-          template: 'minimal',
-          theme: 'dark'
-        }).catch(() => {});
+        const username = (email.split('@')[0] || 'developer').toLowerCase().replace(/[^a-z0-9_-]/g, '');
+        try {
+          await supabase.from('portfolios').upsert({
+            id: data.user.id,
+            name: name || 'Developer',
+            username: username,
+            template: 'minimal',
+            theme: 'dark',
+            skills: [],
+            projects: [],
+            experience: [],
+            education: [],
+            certificates: [],
+            contact: { email: email },
+            socials: []
+          }, { onConflict: 'id' });
+        } catch (_) {
+          // Non-blocking catch
+        }
       }
       toast.success('Account created! Welcome to Portfolio Builder');
       navigate('/dashboard');
