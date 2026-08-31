@@ -43,6 +43,7 @@ function App() {
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/legal" element={<Navigate to="/legal/privacy" replace />} />
             <Route path="/legal/:type" element={<Legal />} />
             
             {/* Protected Routes */}

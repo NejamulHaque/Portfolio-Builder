@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { Home, LayoutDashboard } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -8,6 +9,10 @@ import Footer from '../components/Footer';
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-[#050505] text-white flex flex-col font-sans selection:bg-indigo-500/30">
+      <Helmet>
+        <title>404 Page Not Found | Portfolio Builder</title>
+        <meta name="robots" content="noindex, follow" />
+      </Helmet>
       <Navbar />
 
       <main className="flex-1 flex items-center justify-center p-6 relative overflow-hidden">

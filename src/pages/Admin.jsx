@@ -9,6 +9,7 @@ import {
   Download, ExternalLink, MapPin, 
   Smartphone, Monitor, Sparkles, Terminal, Copy
 } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import { useToast } from '../components/Toast';
 
 export default function Admin() {
@@ -244,6 +245,10 @@ export default function Admin() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white p-4 sm:p-8 font-sans selection:bg-indigo-500/30">
+      <Helmet>
+        <title>Admin Control Center | Portfolio Builder</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <div className="max-w-7xl mx-auto space-y-8">
         
         {/* TOP COMMAND HEADER */}

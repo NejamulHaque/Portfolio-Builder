@@ -7,6 +7,7 @@ import {
   Smartphone, FileText, Download, QrCode, Palette,
   Eye, ChevronDown
 } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PortfolioRenderer from '../components/PortfolioRenderer';
@@ -38,6 +39,12 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#050505] text-white overflow-x-hidden font-sans selection:bg-indigo-500/30 selection:text-white">
       
+      <Helmet>
+        <title>Portfolio Builder | Next-Gen AI Developer Portfolio Platform</title>
+        <meta name="description" content="Build and launch a stunning developer portfolio in minutes with real-time AI bio generation, 6+ designer templates, live preview, PDF resume export, and custom domains." />
+        <link rel="canonical" href="https://builderr-ai.vercel.app/" />
+      </Helmet>
+
       {/* Background Animated Gradient Mesh */}
       <div className="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-indigo-600/15 rounded-full blur-[140px] animate-pulse"></div>

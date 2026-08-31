@@ -9,6 +9,7 @@ import {
   Loader2, Code, Rocket, ExternalLink, LayoutTemplate,
   Briefcase, Download, UploadCloud, QrCode, Monitor, Tablet, Smartphone
 } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import PortfolioRenderer from '../components/PortfolioRenderer';
 import QRCodeModal from '../components/QRCodeModal';
@@ -313,6 +314,10 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white flex flex-col font-sans">
+      <Helmet>
+        <title>Portfolio Studio & Editor | Portfolio Builder</title>
+        <meta name="description" content="Dual-pane live portfolio editor with AI writing assistance, real-time device preview, and 6 designer templates." />
+      </Helmet>
       
       {/* --- TOP NAVBAR --- */}
       <nav className="sticky top-0 z-40 w-full border-b border-white/10 bg-[#08080c]/90 backdrop-blur-xl">

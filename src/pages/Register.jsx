@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
 import { Mail, Lock, User, ArrowRight, AlertCircle, ArrowLeft, Sparkles, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { useToast } from '../components/Toast';
 
 export default function Register() {
@@ -48,6 +49,11 @@ export default function Register() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#050505] text-white font-sans relative overflow-hidden selection:bg-indigo-500/30">
+      <Helmet>
+        <title>Create Free Account | Portfolio Builder</title>
+        <meta name="description" content="Join thousands of software engineers and launch your developer portfolio for free in under 3 minutes." />
+        <link rel="canonical" href="https://builderr-ai.vercel.app/register" />
+      </Helmet>
       
       {/* Glow Effects */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-600/15 rounded-full blur-[140px] pointer-events-none"></div>
@@ -70,7 +76,7 @@ export default function Register() {
             <Link to="/" className="inline-block mb-2">
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 p-[1px] mx-auto shadow-lg shadow-indigo-600/20">
                 <div className="w-full h-full bg-[#0a0a0f] rounded-2xl flex items-center justify-center">
-                  <img src="/favicon.svg" alt="P" className="w-6 h-6" />
+                  <img src="/favicon.svg" alt="Portfolio Builder Logo" className="w-6 h-6" />
                 </div>
               </div>
             </Link>

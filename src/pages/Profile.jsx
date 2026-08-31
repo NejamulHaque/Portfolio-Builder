@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import QRCodeModal from '../components/QRCodeModal';
 import { useToast } from '../components/Toast';
+import { Helmet } from 'react-helmet-async';
 
 export default function Profile() {
   const { user, logout } = useAuth();
@@ -118,13 +119,17 @@ export default function Profile() {
 
   return (
     <div className={`min-h-screen ${isDark ? 'bg-[#050505] text-white' : 'bg-gray-50 text-gray-900'} font-sans pb-24 transition-colors duration-300`}>
+      <Helmet>
+        <title>Account Profile & Analytics | Portfolio Builder</title>
+        <meta name="description" content="View your developer identity score, track live portfolio traffic, and manage account settings." />
+      </Helmet>
       
       {/* NAVBAR */}
       <nav className={`border-b ${isDark ? 'border-white/10 bg-black/60' : 'border-gray-200 bg-white/70'} backdrop-blur-xl sticky top-0 z-40`}>
         <div className="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate('/dashboard')}>
             <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center font-bold text-xs text-white">
-              <img src="/favicon.svg" alt="P" className="w-4 h-4" />
+              <img src="/favicon.svg" alt="Portfolio Builder Logo" className="w-4 h-4" />
             </div>
             <span className="font-bold text-lg tracking-tight">Portfolio<span className="text-indigo-400"> Builder</span></span>
           </div>

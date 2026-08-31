@@ -8,6 +8,7 @@ import {
 import { supabase } from '../lib/supabaseClient';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../components/Toast';
+import { Helmet } from 'react-helmet-async';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -146,6 +147,12 @@ export default function Pricing() {
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans flex flex-col selection:bg-indigo-500/30 selection:text-white">
       
+      <Helmet>
+        <title>Pricing & Plans | Portfolio Builder</title>
+        <meta name="description" content="Affordable plans for developers. Start for free or upgrade to Pro Developer for custom domains, priority AI, and unlimited portfolio views." />
+        <link rel="canonical" href="https://builderr-ai.vercel.app/pricing" />
+      </Helmet>
+
       {/* Navbar */}
       <Navbar />
 
